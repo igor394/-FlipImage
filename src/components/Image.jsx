@@ -2,7 +2,13 @@ import React from 'react';
 
 const Image = (props) => {
     return (
-        <img src="fish.png" alt="images" style={{transform: `rotate(${props.flip}deg)`}} />
+        <div className="wrap-img">
+            <div>
+                <img className="front-img" src={props.img} alt="images" style={{transform: `rotate(${props.flip}deg)`}} />
+            </div>
+
+        </div>
+
     );
 };
 
