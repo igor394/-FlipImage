@@ -1,7 +1,7 @@
 import './App.css';
 import Image from "./components/Image";
 import MakeFlip from "./components/MakeFlip";
-import {useEffect, useState} from "react";
+import {useEffect, useState, useCallback} from "react";
 import SelectImg from "./components/SelectImg";
 import View from "./components/View";
 
@@ -27,17 +27,16 @@ function App() {
         let newFlip = state - 180;
         setState(newFlip)
     }
-    const selectImg=(event)=>{
+    const selectImg = useCallback((event) => {
         event.preventDefault();
-        console.log(event.target.elements.url.value);
-        console.log(event.target);
         let file = event.target.elements.url.value;
         setChangeImg(file);
-    }
+    },[]);
 
-    const viewImage =(event)=>{
-        setPreView(event.target.value)
-    }
+    const viewImage = useCallback((event)=>{
+        let file = event.target.value;
+        setPreView(file);
+    }, []);
 
   return (
     <div className="main">
